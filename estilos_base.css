@@ -1,0 +1,375 @@
+/*
+ * =================================================================
+ * Archivo: estilos_base.css
+ * Descripción: Define estilos globales, la estructura del menú, y 
+ * cinco temas de color para las aplicaciones.
+ * =================================================================
+ */
+
+/* ========================================= */
+/* 0. VARIABLES Y ESTILOS GLOBALES BASE */
+/* ========================================= */
+
+:root {
+    /* Paleta Base (Tema General - App Moderna) */
+    --color-fondo-claro: #f0f4f7;  /* Fondo de la APP (Gris muy claro) */
+    --color-app-background: #ffffff;/* Fondo de Tarjetas (Blanco puro) */
+    --color-turquesa: #05a796; /* Acento Global (Botón Hamburguesa) */
+    --color-verde-educativo: #009688; /* Header Menú */
+    --color-texto-oscuro: #333333;
+    --color-texto-suave: #888888;
+    --app-radius: 18px; /* Radio de Esquinas Grande */
+
+    /* Variables de Menú Moderno */
+    --color-menu-header: #f8f9fa; /* Gris muy claro para el encabezado */
+    --color-menu-link-hover: #e9ecef; /* Gris suave para el hover */
+    --color-menu-shadow: 0 0 15px rgba(0, 0, 0, 0.15); /* Sombra elegante */
+    
+    /* Placeholders para el tema activo (se sobrescribe por .tema-XXX) */
+    --color-acento-claro: #ccc;
+    --color-acento-fuerte: #555;
+    --color-acento-sombra: rgba(0, 0, 0, 0.1);
+    --color-fondo-resultado: #eee;
+}
+
+body {
+    background-color: var(--color-fondo-claro);
+    color: var(--color-texto-oscuro);
+    font-family: 'Poppins', 'Segoe UI', sans-serif; /* Fuente Moderna */
+    transition: background-color 0.5s ease;
+    min-height: 100vh;
+}
+
+/* Contenedor principal que simula la pantalla de la app */
+.app-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alineado arriba para que el contenido fluya */
+    padding: 20px 0;
+}
+
+.app-container {
+    max-width: 900px; /* Ancho máximo similar al de la imagen */
+    width: 95%;
+}
+
+/* ----------------------------------------- */
+/* 0.1 ELEMENTOS DE APP (Tarjetas, Inputs, Botones) */
+/* ----------------------------------------- */
+
+.app-card {
+    background-color: var(--color-app-background);
+    border-radius: var(--app-radius);
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Sombra suave y moderna */
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.app-header {
+    text-align: center;
+}
+
+.app-title {
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.app-subtitle {
+    color: var(--color-texto-suave);
+    font-size: 1.1rem;
+}
+
+.card-title-op {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--color-acento-fuerte);
+    border-bottom: 2px solid var(--color-acento-claro);
+    padding-bottom: 10px;
+}
+
+.app-input, .app-select {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 2px solid var(--color-acento-claro);
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.app-input:focus, .app-select:focus {
+    border-color: var(--color-acento-fuerte);
+    box-shadow: 0 0 0 0.25rem var(--color-acento-sombra);
+}
+
+.app-btn {
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 30px;
+    transition: all 0.3s ease, transform 0.2s ease;
+    color: white !important;
+}
+
+.resultado-card {
+    border: 3px solid var(--color-acento-claro);
+    background-color: var(--color-fondo-resultado);
+    position: relative;
+    overflow: hidden;
+}
+
+.resultado-display {
+    padding: 15px 0;
+}
+
+.resultado-valor {
+    color: var(--color-acento-fuerte);
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 800;
+    font-size: 4rem;
+}
+
+.resultado-label {
+    color: var(--color-texto-suave);
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+
+/* ----------------------------------------- */
+/* 0.2 ESTILOS DEL MENÚ DESPLEGABLE (OFFCANVAS) */
+/* ----------------------------------------- */
+
+.offcanvas {
+    background-color: var(--color-app-background);
+    color: var(--color-texto-oscuro);
+    box-shadow: var(--color-menu-shadow);
+}
+
+.offcanvas-header.header-color {
+    background-color: var(--color-verde-educativo);
+    color: white;
+    border-bottom: 1px solid var(--color-turquesa);
+    font-weight: bold;
+    padding: 20px;
+}
+
+.offcanvas-body {
+    padding: 20px 15px;
+}
+
+.offcanvas-body .nav-link {
+    color: var(--color-texto-oscuro);
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* Estado Activo y Hover */
+.offcanvas-body .nav-link:hover,
+.offcanvas-body .nav-link.active {
+    background-color: var(--color-menu-link-hover);
+    color: var(--color-verde-educativo);
+    transform: translateX(5px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.offcanvas-body .nav-link i {
+    font-size: 1.3rem;
+    margin-right: 15px;
+}
+
+/* Estilo del botón hamburguesa flotante */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+    50% { transform: scale(1.03); box-shadow: 0 0 0 5px rgba(5, 167, 150, 0.2); }
+    100% { transform: scale(1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+}
+
+.menu-toggler {
+    position: fixed; top: 20px; left: 20px; right: auto; z-index: 1050;
+    background-color: var(--color-turquesa); border-color: var(--color-turquesa);
+    color: white; border-radius: 50%; width: 50px; height: 50px; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;
+    animation: pulse 3s infinite;
+}
+
+/* Animación del resultado */
+.animated-result {
+    animation: resultado-animado 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes resultado-animado {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Ocultar flechas de input type="number" */
+.app-input::-webkit-outer-spin-button,
+.app-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.app-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* ========================================= */
+/* 1. TEMA ROSA (Suma) - PALETA Y ESTILOS */
+/* ========================================= */
+
+.tema-rosa {
+    --color-rosa-base: #ffb6c1;
+    --color-rosa-fuerte: #ff69b4;
+    --color-fondo-suma: #fff0f5;
+
+    --color-acento-claro: var(--color-rosa-base);
+    --color-acento-fuerte: var(--color-rosa-fuerte);
+    --color-acento-sombra: rgba(216, 106, 161, 0.3);
+    --color-fondo-resultado: var(--color-fondo-suma);
+}
+
+.tema-rosa body { background-color: var(--color-fondo-suma); }
+.suma-title { color: var(--color-rosa-fuerte); }
+
+.suma-btn {
+    background-color: var(--color-rosa-fuerte);
+    border-color: var(--color-rosa-fuerte);
+}
+
+.suma-btn:hover {
+    background-color: #4b0082; /* Morado Oscuro para contraste */
+    border-color: #4b0082;
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ========================================= */
+/* 2. TEMA MORADO (Cuadrado) - PALETA Y ESTILOS */
+/* ========================================= */
+
+.tema-morado {
+    --color-morado-base: #c3b1e1;
+    --color-morado-fuerte: #8a2be2;
+    --color-fondo-cuadrado: #f8f0ff;
+
+    --color-acento-claro: var(--color-morado-base);
+    --color-acento-fuerte: var(--color-morado-fuerte);
+    --color-acento-sombra: rgba(138, 43, 226, 0.3);
+    --color-fondo-resultado: var(--color-fondo-cuadrado);
+}
+
+.tema-morado body { background-color: var(--color-fondo-cuadrado); }
+.cuadrado-title { color: var(--color-morado-fuerte); }
+
+.cuadrado-btn {
+    background-color: var(--color-morado-fuerte);
+    border-color: var(--color-morado-fuerte);
+}
+
+.cuadrado-btn:hover {
+    background-color: #4b0082; /* Indigo Oscuro */
+    border-color: #4b0082;
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ========================================= */
+/* 3. TEMA VERDE (Promedio) - PALETA Y ESTILOS */
+/* ========================================= */
+
+.tema-verde {
+    --color-verde-base: #a2e8a2;
+    --color-verde-fuerte: #4CAF50;
+    --color-fondo-promedio: #f2fff2;
+
+    --color-acento-claro: var(--color-verde-base);
+    --color-acento-fuerte: var(--color-verde-fuerte);
+    --color-acento-sombra: rgba(76, 175, 80, 0.3);
+    --color-fondo-resultado: var(--color-fondo-promedio);
+}
+
+.tema-verde body { background-color: var(--color-fondo-promedio); }
+.promedio-title { color: var(--color-verde-fuerte); }
+
+.promedio-btn {
+    background-color: var(--color-verde-fuerte);
+    border-color: var(--color-verde-fuerte);
+}
+
+.promedio-btn:hover {
+    background-color: #388e3c; /* Verde Oscuro */
+    border-color: #388e3c;
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ========================================= */
+/* 4. TEMA NARANJA (Conversión) - PALETA Y ESTILOS */
+/* ========================================= */
+
+.tema-naranja {
+    --color-naranja-base: #ffdab9;
+    --color-naranja-fuerte: #ff8c00;
+    --color-fondo-conversion: #fffaf0;
+
+    --color-acento-claro: var(--color-naranja-base);
+    --color-acento-fuerte: var(--color-naranja-fuerte);
+    --color-acento-sombra: rgba(255, 140, 0, 0.3);
+    --color-fondo-resultado: var(--color-fondo-conversion);
+}
+
+.tema-naranja body { background-color: var(--color-fondo-conversion); }
+.conversion-title { color: var(--color-naranja-fuerte); }
+
+.conversion-btn {
+    background-color: var(--color-naranja-fuerte);
+    border-color: var(--color-naranja-fuerte);
+}
+
+.conversion-btn:hover {
+    background-color: #d85c00; /* Naranja Quemado */
+    border-color: #d85c00;
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ========================================= */
+/* 5. TEMA AZUL (Comparación) - PALETA Y ESTILOS */
+/* ========================================= */
+
+.tema-azul {
+    --color-azul-base: #a6d8ff;
+    --color-azul-fuerte: #1e90ff;
+    --color-fondo-comparacion: #f0f8ff;
+
+    --color-acento-claro: var(--color-azul-base);
+    --color-acento-fuerte: var(--color-azul-fuerte);
+    --color-acento-sombra: rgba(30, 144, 255, 0.3);
+    --color-fondo-resultado: var(--color-fondo-comparacion);
+}
+
+.tema-azul body { background-color: var(--color-fondo-comparacion); }
+.comparacion-title { color: var(--color-azul-fuerte); }
+
+.comparacion-btn {
+    background-color: var(--color-azul-fuerte);
+    border-color: var(--color-azul-fuerte);
+}
+
+.comparacion-btn:hover {
+    background-color: #004d99; /* Azul Marino Oscuro */
+    border-color: #004d99;
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Estilo del botón de volver */
+.back-btn {
+    border-radius: 10px;
+    font-weight: 600;
+}
